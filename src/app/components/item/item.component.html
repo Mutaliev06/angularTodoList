@@ -1,8 +1,22 @@
-<p>item works!</p>
+<p>Список заданий</p>
+<div>
+  <button (click)="allTodo()">All</button>
+  <button (click)="doneTodo()">Done</button>
+  <button (click)="notDoneTodo()">Not done</button>
+</div>
+<form (submit)="addTodo()">
+  <input
+    type="text"
+    name="inputTodo"
+    placeholder="Введите текст..."
+    [(ngModel)] = "inputTodo"
+  />
+  <input type="submit" value="Add Todo" />
+</form>
 <div class="item {{(todo.completed ? 'done' : '')}}" *ngFor="let todo of todos; let i = index;">
-  <div class="id">{{ i }}</div>
+  <div class="id">{{ i + 1 }}</div>
   <div class="text">{{ todo.text }}</div>
   <div class="date">{{ todo.date }}</div>
   <button class="doneButton" (click)="toggleDone(i)">Done</button>
-  <button class="delete">Remove</button>
+  <button class="delete" (click)="deleteTodo(i)">Remove</button>
 </div>
